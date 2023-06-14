@@ -4,14 +4,14 @@ import { SearchManufacturerProps } from '@/types'
 import { useState , Fragment } from 'react'
 import Image from 'next/image'
 import { manufacturers } from '@/constants'
-function SearchManufacturer({manufacturer,setManufacturer}:SearchManufacturerProps) {
+function SearchManufacturer({selected,setSelected}:SearchManufacturerProps) {
     const [query,setQuery] = useState('')
     const filterManufacturers = query === ''?manufacturers : manufacturers.filter((item)=>(
         item.toLowerCase().replace(/\s+/g,'').includes(query.toLowerCase().replace(/\s+/g,''))
     ))
   return (
     <div className='serach-manufacturer'>
-        <Combobox value={manufacturer} onChange={setManufacturer}>
+        <Combobox value={selected} onChange={setSelected}>
             <div className='relative w-full'>
                 <Combobox.Button className="absolute top-[14px]">
                     <Image src="/car-logo.svg"
